@@ -1,0 +1,127 @@
+﻿<metro:MetroWindow x:Class="BitRekt.PC.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BitRekt.PC"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
+        xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+        mc:Ignorable="d"
+        GlowBrush="{DynamicResource AccentColorBrush}"
+        BorderThickness="1"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="BitRekt" Width="1139" WindowStartupLocation="CenterScreen" SizeToContent="WidthAndHeight">
+
+    <metro:MetroWindow.RightWindowCommands>
+        <metro:WindowCommands>
+            <Button Content="account" />
+        </metro:WindowCommands>
+    </metro:MetroWindow.RightWindowCommands>
+
+    <Grid>
+
+        <TabControl x:Name="tabControl" Margin="0,0,-1,201" HorizontalAlignment="Left" Width="1130">
+            <TabItem Header="Manual" Padding="10,2,6,2">
+                <Grid Background="#FF3B3B3C" Margin="0,0,1,0">
+                    <ComboBox materialDesign:HintAssist.Hint="Symbol" DisplayMemberPath="Symbol" Style="{StaticResource MaterialDesignFloatingHintComboBox}" x:Name="comboBox" HorizontalAlignment="Left" Margin="31,24,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0" IsReadOnly="True"/>
+                    <GroupBox x:Name="groupBox" Header="Order" Margin="31,100,611,24">
+                        <Grid>
+                            <Button x:Name="button" Content="Buy/Long" Margin="10,0,0,10" Height="42" HorizontalAlignment="Left" Width="128" VerticalAlignment="Bottom"/>
+                            <Button x:Name="button1" Content="Sell/Short" Margin="161,195,0,0" Height="42" HorizontalAlignment="Left" Width="128" VerticalAlignment="Top"/>
+                            <RadioButton x:Name="radioButton1" Content="Market" HorizontalAlignment="Left" Margin="78,86,0,0" VerticalAlignment="Top"/>
+                            <RadioButton x:Name="radioButton" Content="Limit" HorizontalAlignment="Left" Margin="10,86,0,0" IsChecked="True" Height="18" VerticalAlignment="Top"/>
+                            <RadioButton x:Name="radioButton2" Content="Stop Market" HorizontalAlignment="Left" Margin="161,86,0,0" VerticalAlignment="Top"/>
+                            <StackPanel HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="130">
+                                <Label x:Name="label" Content="Contracts" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="80"/>
+                                <metro:NumericUpDown Minimum="1" Maximum="100000" Interval="0.5"  StringFormat="C2" Margin="0,0,-29,0" UpDownButtonsWidth="28" Value="1" TrackMouseWheelWhenMouseOver="True" metro:TextBoxHelper.HasText="True" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="129" />
+                            </StackPanel>
+                            <StackPanel Margin="161,10,42,185" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130">
+                                <Label x:Name="label1" Content="Price" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="54"/>
+                                <metro:NumericUpDown Minimum="1" Maximum="100000" Interval="0.5"  StringFormat="C2" Margin="0,0,-30,0" HorizontalAlignment="Left" Width="130" UpDownButtonsWidth="28" Value="1" TrackMouseWheelWhenMouseOver="True" metro:TextBoxHelper.HasText="True" Height="26" VerticalAlignment="Top" />
+                            </StackPanel>
+                            <CheckBox x:Name="checkBox1" Content="Post-Only" Margin="10,133,0,0" HorizontalAlignment="Left" Width="94" IsChecked="True" Height="18" VerticalAlignment="Top"/>
+                            <CheckBox x:Name="checkBox2" Content="Reduce-Only" Margin="161,133,0,0" HorizontalAlignment="Left" Width="112" Height="18" VerticalAlignment="Top"/>
+                            <Separator HorizontalAlignment="Left" Height="100" Margin="187,74,0,0" VerticalAlignment="Top" Width="232" RenderTransformOrigin="0.5,0.5">
+                                <Separator.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="90"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Separator.RenderTransform>
+                            </Separator>
+                            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="155" Height="227" Margin="0,0,0,10">
+                                <Label x:Name="label2" Content="Cost" HorizontalAlignment="Center" FontSize="18"/>
+                                <Label x:Name="label6" Content="0.445" HorizontalAlignment="Center"/>
+                                <Label x:Name="label3" Content="Fee/Rebate" HorizontalAlignment="Center" FontSize="18"/>
+                                <Label x:Name="label7" Content="0.002" HorizontalAlignment="Center"/>
+                                <Label x:Name="label4" Content="% of A.B." HorizontalAlignment="Center" FontSize="18"/>
+                                <Label x:Name="label8" Content="5%" HorizontalAlignment="Center"/>
+                                <Label x:Name="label5" Content="% of T.B." HorizontalAlignment="Center" FontSize="18"/>
+                                <Label x:Name="label9" Content="2%" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox x:Name="groupBox1" Header="GroupBox" Margin="550,100,231,24">
+                        <Grid>
+                            <Button x:Name="button2" Content="Take Profit ($20)" HorizontalAlignment="Left" Margin="6,148,0,0" VerticalAlignment="Top" Height="32"/>
+                            <Slider x:Name="slider" Style="{StaticResource MaterialDesignDiscreteSlider}" HorizontalAlignment="Left" Margin="84,66,0,0" VerticalAlignment="Top" Maximum="50" metro:SliderHelper.EnableMouseWheel="MouseHover" SmallChange="1" Width="150" Minimum="10"/>
+                            <Button x:Name="button3" Content="Market Close All" HorizontalAlignment="Left" Margin="6,205,0,0" VerticalAlignment="Top"/>
+                            <Button x:Name="button4" Content="Stop Loss ($20)" HorizontalAlignment="Left" Margin="162,148,0,0" VerticalAlignment="Top"/>
+                        </Grid>
+                    </GroupBox>
+                    <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="22" Margin="964,316,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Auto">
+                <Grid Background="#FF3B3B3C" Margin="0,0,1,0"/>
+            </TabItem>
+        </TabControl>
+
+
+        <!--
+        <dragablz:TabablzControl  ShowDefaultAddButton="True" Height="435" VerticalAlignment="Top" HorizontalAlignment="Right" Width="801" >
+            <dragablz:TabablzControl.InterTabController>
+                <dragablz:InterTabController />
+            </dragablz:TabablzControl.InterTabController>
+            <TabItem Header="HELLO">
+                <Grid Margin="8 8 8 8">
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="MATERIAL">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Material Design</TextBlock>
+            </TabItem>
+            <TabItem Header="DESIGN">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Looks Quite Nice</TextBlock>
+            </TabItem>
+
+        </dragablz:TabablzControl>
+        -->
+
+        <StatusBar Height="29" Background="#19FF3F3F" Margin="0,0,-1,2" VerticalAlignment="Bottom">
+            <Label x:Name="label10" />
+            <Label x:Name="label11" Margin="-4,0,0,0"/>
+        </StatusBar>
+        <DataGrid x:Name="dataGrid" Margin="10,0,10,34" FontSize="12" Height="162" VerticalAlignment="Bottom" CanUserReorderColumns="False" CanUserResizeColumns="False" metro:DataGridHelper.EnableCellEditAssist="True" AutoGenerateColumns="False" IsReadOnly="True" ColumnWidth="Auto">
+            <DataGrid.Columns>
+                <materialDesign:MaterialDataGridTextColumn Header="Symbol" Binding="{Binding Symbol}"/>
+                <materialDesign:MaterialDataGridTextColumn Header="Size" Binding="{Binding CurrentQty}"/>
+                <materialDesign:MaterialDataGridTextColumn Header="Entry Price" Binding="{Binding AvgEntryPrice}"/>
+                <materialDesign:MaterialDataGridTextColumn Header="Mark Price" Binding="{Binding MarkPrice}"/>
+                <materialDesign:MaterialDataGridTextColumn Header="Liquidation Price" Binding="{Binding LiquidationPrice}"/>
+                <materialDesign:MaterialDataGridTextColumn Header="Margin" Binding="{Binding PosMargin}"/>
+                <materialDesign:MaterialDataGridTextColumn Header="Unrealized PNL" Binding="{Binding UnrealisedPnl}"/>
+                <materialDesign:MaterialDataGridTextColumn Header="Realized PNL" Binding="{Binding RealisedPnl}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</metro:MetroWindow>
